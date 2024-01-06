@@ -8,16 +8,16 @@ import processing.core.PImage;
  * Goal: Make a record spin and play music!
  * 
  * 1. Make an int variable to keep track of how much the record will spin.
- * 	int rec=0;
+ *	
  * In the setup() method:
  * 2. Load a picture of a record using the loadImage() method:
  *    pictureOfRecord = loadImage("images/record.png");
- * 	loadImage();
+ * 
  * 3. Call the image variable's resize() method to set the image's width and
  *    height to the window's width and height.
- * 	resize();
+ * 	
  * 4. Call the image() method to display the record image. Do you see it?
- * image();
+ * 		
  * In the draw() method:
  * 
  * 5. Make the record spin by increasing the variable from step 1.
@@ -41,19 +41,34 @@ public class SpinningRecord extends PApplet {
     
     Song song = new Song("awesomeTrack.mp3");
     PImage pictureOfRecord;
-    
+    int rec=10;
     @Override
     public void settings() {
         size(WIDTH, HEIGHT);
+     
+       
     }
 
     @Override
     public void setup() {
-        
+       pictureOfRecord= loadImage("images/record.png");
+      pictureOfRecord.resize(WIDTH,HEIGHT);
+     
+      
     }
 
     @Override
     public void draw() {
+    	rec=rec+10;
+      rotateImage(pictureOfRecord,rec);
+      image(pictureOfRecord,0,0);
+      if(mousePressed) {
+    	rec=rec-10;
+      }
+    song.play();
+    if(mousePressed) {
+    	song.stop();
+    }
         
     }
 
