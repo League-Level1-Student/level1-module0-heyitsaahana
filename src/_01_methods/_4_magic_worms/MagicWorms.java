@@ -1,4 +1,4 @@
-package _01_methods._4_magic_worms.MagicWorms;
+package _01_methods._4_magic_worms;
 
 import processing.core.PApplet;
 
@@ -40,12 +40,19 @@ public class MagicWorms extends PApplet {
 
     @Override
     public void setup() {
-
+    	background( 0,100,0 );
     }
 
     @Override
     public void draw() {
-
+    	background( 0,100,0 );
+    	fill(0,0,255);
+    	for(int w=0;w<301;w++) 
+    	{
+    	ellipse(random(WIDTH),random(HEIGHT),30,30);
+    	}
+    	getWormX();
+    	
     }
 
     static public void main(String[] args) {

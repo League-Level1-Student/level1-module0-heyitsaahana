@@ -43,10 +43,10 @@ import processing.core.PImage;
  */
 public class RainGame extends PApplet {
     static final int WIDTH = 600;
-    static final int HEIGHT = 600;
+    static final int HEIGHT = 900;
 
     int score = 0;
-    int bucketWidth = 50;
+    int bucketWidth = 200;
     int bucketHeight;
     PImage bucket;
     int rainX=50;
@@ -67,12 +67,19 @@ public class RainGame extends PApplet {
     public void draw() {
     	background(0,0,100);
     	 ellipse(rainX,rainY,30,75);
-    rainY=rainY+5;
-    if(rainY==600) {
-    //make a new ellipse
-    }
-    int randomNumber=(int)random(600);
+    rainY=rainY+10;
+    if(rainY==HEIGHT) {
+    	checkCatch(rainX);
+    		
+    
     	
+        rainX= (int)random(WIDTH);
+    	rainY=50;
+     }
+    rect(mouseX,HEIGHT-75,bucketWidth,75);
+    
+   text("Score:"+score,20,20);
+    textSize(20);
     	
     }
 
@@ -83,6 +90,8 @@ public class RainGame extends PApplet {
     /*********************** DO NOT MODIFY THE CODE BELOW ********************/
 
     void checkCatch(int x) {
+    	
+    	
         if (x > mouseX && x < mouseX + bucketWidth) {
             score++;
         } else if (score > 0) {
